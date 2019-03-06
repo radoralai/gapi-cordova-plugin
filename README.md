@@ -1,4 +1,4 @@
-Cordova Plugin Template
+Google API Cordova Plugin
 ======
 
-This is a simple starting point for building a Cordova plugin on iOS and Android.
+This is a simple starting point for building a Google API Cordova plugin on iOS and Android.

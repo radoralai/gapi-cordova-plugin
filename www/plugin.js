@@ -9,6 +9,9 @@ var GapiCordovaPlugin = {
   },
   getDate: function(cb) {
     exec(cb, null, PLUGIN_NAME, 'getDate', []);
+  },
+  getToken: function(cb) {
+    exec(cb, null, PLUGIN_NAME, 'getToken', [])
   }
 };
 

@@ -27,6 +27,9 @@
 
       <framework src="src/android/framework.gradle" custom="true" type="gradleReference"/>
 
+      <source-file src="src/android/com/investiss/jwt/JWTHeader.java" target-dir="src/com/investiss/jwt" />
+      <source-file src="src/android/com/investiss/jwt/JWTPayload.java" target-dir="src/com/investiss/jwt" />
+      <source-file src="src/android/com/investiss/jwt/SignedJWT.java" target-dir="src/com/investiss/jwt" />
       <source-file src="src/android/com/investiss/GapiCordovaPlugin.java" target-dir="src/com/investiss/" />
     </platform>
 

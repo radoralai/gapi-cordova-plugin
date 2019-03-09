@@ -1,4 +1,5 @@
 /**
+ * It provides the JWT Token used to authenticates to Google Service
  */
 package com.investiss;
 
@@ -32,6 +33,37 @@ public class GapiCordovaPlugin extends CordovaPlugin {
       callbackContext.sendPluginResult(result);
     }
     return true;
+  }
+
+  private String tokenJWT(Context context,
+                         String alias,
+                         JWTPayload jwtPayLoad) throws
+                                                GeneralSecurityException,
+                                                IOException {
+    LOG.d(TAG, ">>tokenJWT");
+
+    Key key = getSecretKey(context, alias);
+    if (key == null) {
+      throw new KeyException("key not found");
+    }
+
+    // Create HMAC signer
+    String tokenJWT = null;
+    try {
+      LOG.d(TAG, ">>alias " + alias);
+
+      SignedJWT signedJWT = new SignedJWT(JWTHeader.HS256, jwtPayLoad);
+
+      // Compute the HMAC protection
+      signedJWT.sign(key);
+      tokenJWT = signedJWT.getToken();
+      LOG.d(TAG, "<<tokenJWT");
+    }
+    catch (Throwable e) {
+      throw new GeneralSecurityException(e);
+    }
+
+    return tokenJWT;
   }
 
 }
